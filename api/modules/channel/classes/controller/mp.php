@@ -38,10 +38,11 @@ class Controller_Mp extends \Fuel\Core\Controller_Rest
         }
 
         //判断消息来源是否合法
-        if(\Fuel::$env == \Fuel::PRODUCTION && ! $this->check_signature(\Input::get('signature'),
-            \Input::get('timestamp'),
-            \Input::get('nonce'),
-            $this->account->token)){
+        if(\Fuel::$env == \Fuel::PRODUCTION
+            && ! $this->check_signature(\Input::get('signature'),
+                \Input::get('timestamp'),
+                \Input::get('nonce'),
+                $this->account->token)){
             die($this->response(['status' => 'err', 'msg' => '非法消息来源', 'errcode' => 110], 404));
         }
 
@@ -161,6 +162,51 @@ class Controller_Mp extends \Fuel\Core\Controller_Rest
                 break;
             case 'VIEW':
                 //$params['EventKey']
+                break;
+            case 'MASSSENDJOBFINISH':
+                /**
+                 * <xml>
+                <ToUserName><![CDATA[gh_4d00ed8d6399]]></ToUserName>
+                <FromUserName><![CDATA[oV5CrjpxgaGXNHIQigzNlgLTnwic]]></FromUserName>
+                <CreateTime>1481013459</CreateTime>
+                <MsgType><![CDATA[event]]></MsgType>
+                <Event><![CDATA[MASSSENDJOBFINISH]]></Event>
+                <MsgID>1000001625</MsgID>
+                <Status><![CDATA[article is a reprint and user choose not to send]]></Status>
+                <TotalCount>0</TotalCount>
+                <FilterCount>0</FilterCount>
+                <SentCount>0</SentCount>
+                <ErrorCount>0</ErrorCount>
+                <CopyrightCheckResult>
+                <Count>2</Count>
+                <ResultList>
+                <item>
+                <ArticleIdx>1</ArticleIdx>
+                <UserDeclareState>0</UserDeclareState>
+                <AuditState>2</AuditState>
+                <OriginalArticleUrl><![CDATA[Url_1]]></OriginalArticleUrl>
+                <OriginalArticleType>1</OriginalArticleType>
+                <CanReprint>1</CanReprint>
+                <NeedReplaceContent>1</NeedReplaceContent>
+                <NeedShowReprintSource>1</NeedShowReprintSource>
+                </item>
+                <item>
+                <ArticleIdx>2</ArticleIdx>
+                <UserDeclareState>0</UserDeclareState>
+                <AuditState>2</AuditState>
+                <OriginalArticleUrl><![CDATA[Url_2]]></OriginalArticleUrl>
+                <OriginalArticleType>1</OriginalArticleType>
+                <CanReprint>1</CanReprint>
+                <NeedReplaceContent>1</NeedReplaceContent>
+                <NeedShowReprintSource>1</NeedShowReprintSource>
+                </item>
+                </ResultList>
+                <CheckState>2</CheckState>
+                </CopyrightCheckResult>
+                </xml>
+                 */
+                # 请参考：https://mp.weixin.qq.com/wiki?action=doc&id=mp1481187827_i0l21&t=0.42532466699185933
+                $result = '群发结束';
                 break;
         }
 
