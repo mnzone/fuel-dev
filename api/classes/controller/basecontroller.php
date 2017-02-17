@@ -14,7 +14,7 @@ abstract class Controller_BaseController extends \Fuel\Core\Controller_Rest
     public function before(){
         parent::before();
 
-        if (\Fuel::$env === Fuel::TEST) {
+        if (\Fuel::$env !== Fuel::PRODUCTION) {
             return;
         }
 

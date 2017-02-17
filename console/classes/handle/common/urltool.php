@@ -81,7 +81,7 @@ class UrlTool{
      */
     public static function request($url, $method = 'GET', $params = array(), $mime = false, $options = array(), $headers = array()){
         if( ! $url){
-            die('错误的URL');
+            return '错误的URL';
         }
         $curl = \Request::forge($url, 'curl');
         $curl->set_method($method);
