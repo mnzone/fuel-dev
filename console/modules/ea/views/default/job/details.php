@@ -5,10 +5,10 @@
         <div class="widget-toolbar">
             <label>
                 <small class="green">
-                    <b>基本信息</b>
+                    <b>发布职位</b>
                 </small>
 
-                <input id="skip-validation" type="checkbox" class="ace ace-switch ace-switch-4">
+                <!--<input id="skip-validation" type="checkbox" class="ace ace-switch ace-switch-4">-->
                 <span class="lbl middle"></span>
             </label>
         </div>
@@ -50,256 +50,180 @@
                 <!-- #section:plugins/fuelux.wizard.container -->
                 <div class="step-content pos-rel">
                     <div class="step-pane active" data-step="1">
-                        <h3 class="lighter block green">请填写基本信息</h3>
 
-                        <form class="form-horizontal hide" id="frm-base">
-                            <!-- #section:elements.form.input-state -->
-                            <div class="form-group has-warning hide">
-                                <label for="inputWarning" class="col-xs-12 col-sm-3 control-label no-padding-right">职位名称</label>
-
-                                <div class="col-xs-12 col-sm-5">
-                                    <span class="block input-icon input-icon-right">
-                                        <input type="text" id="inputWarning" class="width-100">
-                                        <i class="ace-icon fa fa-leaf"></i>
-                                    </span>
-                                </div>
-                                <div class="help-block col-xs-12 col-sm-reset inline"> 该项为必填项! </div>
-                            </div>
-
-                            <!-- /section:elements.form.input-state -->
-                            <div class="form-group has-error hide">
-                                <label for="inputError" class="col-xs-12 col-sm-3 col-md-3 control-label no-padding-right">职位信息</label>
-
-                                <div class="col-xs-12 col-sm-5">
-                                    <span class="block input-icon input-icon-right">
-                                        <input type="text" id="inputError" class="width-100">
-                                        <i class="ace-icon fa fa-times-circle"></i>
-                                    </span>
-                                </div>
-                                <div class="help-block col-xs-12 col-sm-reset inline"> Error tip help! </div>
-                            </div>
-
-                            <div class="form-group has-success hide">
-                                <label for="inputSuccess" class="col-xs-12 col-sm-3 control-label no-padding-right">Input with success</label>
-
-                                <div class="col-xs-12 col-sm-5">
-																	<span class="block input-icon input-icon-right">
-																		<input type="text" id="inputSuccess" class="width-100">
-																		<i class="ace-icon fa fa-check-circle"></i>
-																	</span>
-                                </div>
-                                <div class="help-block col-xs-12 col-sm-reset inline"> Success tip help! </div>
-                            </div>
-
-                            <div class="form-group has-info hide">
-                                <label for="inputInfo" class="col-xs-12 col-sm-3 control-label no-padding-right">Input with info</label>
-
-                                <div class="col-xs-12 col-sm-5">
-																	<span class="block input-icon input-icon-right">
-																		<input type="text" id="inputInfo" class="width-100">
-																		<i class="ace-icon fa fa-info-circle"></i>
-																	</span>
-                                </div>
-                                <div class="help-block col-xs-12 col-sm-reset inline"> Info tip help! </div>
-                            </div>
+                        <form class="form-horizontal" id="frm-base" data-parsley-validate="">
 
                             <div class="form-group">
-                                <label for="inputError2" class="col-xs-12 col-sm-3 control-label no-padding-right">
+                                <label for="txtName" class="col-xs-12 col-sm-3 control-label no-padding-right">
                                     职位名称
                                 </label>
 
                                 <div class="col-xs-12 col-sm-5">
                                     <span class="input-icon block">
-                                        <input type="text" id="inputError2" class="width-100">
-                                        <i class="ace-icon fa fa-times-circle red"></i>
+                                        <input type="text" placeholder="清洁工" id="txtName" name="name" class="width-100">
+                                        <i class="ace-icon fa fa-times-circle red hide"></i>
                                     </span>
                                 </div>
-                                <div class="help-block col-xs-12 col-sm-reset inline"> 如：Java程序员 </div>
+                                <div class="help-block col-xs-12 col-sm-reset inline"></div>
                             </div>
 
                             <div class="form-group">
-                                <label for="inputError2" class="col-xs-12 col-sm-3 control-label no-padding-right">
+                                <label for="txtBeginSalary" class="col-xs-12 col-sm-3 control-label no-padding-right">
                                     薪水(月薪)
                                 </label>
 
                                 <div class="col-xs-12 col-sm-5">
                                     <span class="input-icon block">
-                                        <input type="text" id="inputError2" class="width-100">
-                                        <i class="ace-icon fa fa-times-circle red"></i>
+                                        <select class="col-xs-6" id="txtBeginSalary" name="salary_begin">
+                                            <option value="">起始薪资</option>
+                                            <option value="0">面议</option>
+                                            <?php for ($salary = 0; $salary < 100000; $salary += 500){ ?>
+                                                <option value="<?=$salary ?>"><?=$salary ?>元</option>
+                                            <?php } ?>
+                                        </select>
+                                        <select class="col-xs-6" id="txtEndSalary" name="salary_end">
+                                            <option value="">截止薪资</option>
+                                            <option value="0">面议</option>
+                                            <?php for ($salary = 1000; $salary < 100000; $salary += 500){ ?>
+                                                <option value="<?=$salary ?>"><?=$salary ?>元</option>
+                                            <?php } ?>
+                                        </select>
                                     </span>
                                 </div>
-                                <div class="help-block col-xs-12 col-sm-reset inline"> 如：Java程序员 </div>
+                                <div class="help-block col-xs-12 col-sm-reset inline"></div>
                             </div>
 
                             <div class="form-group">
-                                <label for="inputError2" class="col-xs-12 col-sm-3 control-label no-padding-right">
+                                <label for="txtWorkingPlace" class="col-xs-12 col-sm-3 control-label no-padding-right">
                                     工作地点
                                 </label>
 
                                 <div class="col-xs-12 col-sm-5">
                                     <span class="input-icon block">
-                                        <input type="text" id="inputError2" class="width-100">
-                                        <i class="ace-icon fa fa-times-circle red"></i>
+                                        <input type="text" placeholder="安阳东站" id="txtWorkingPlace" name="working_place" class="width-100">
+                                        <i class="ace-icon fa fa-times-circle red hide"></i>
                                     </span>
                                 </div>
-                                <div class="help-block col-xs-12 col-sm-reset inline"> 如：Java程序员 </div>
+                                <div class="help-block col-xs-12 col-sm-reset inline"></div>
                             </div>
 
                             <div class="form-group">
-                                <label for="inputError2" class="col-xs-12 col-sm-3 control-label no-padding-right">
+                                <label for="txtJobCategory" class="col-xs-12 col-sm-3 control-label no-padding-right">
                                     工作性质
                                 </label>
 
                                 <div class="col-xs-12 col-sm-5">
                                     <span class="input-icon block">
-                                        <input type="text" id="inputError2" class="width-100">
-                                        <i class="ace-icon fa fa-times-circle red"></i>
+                                        <select id="txtJobCategory" name="job_category" class="width-100">
+                                            <option value="0">全职</option>
+                                            <option value="1">兼职</option>
+                                        </select>
                                     </span>
                                 </div>
-                                <div class="help-block col-xs-12 col-sm-reset inline"> 如：Java程序员 </div>
+                                <div class="help-block col-xs-12 col-sm-reset inline"></div>
                             </div>
 
                             <div class="form-group">
-                                <label for="inputError2" class="col-xs-12 col-sm-3 control-label no-padding-right">
+                                <label for="txtNumber" class="col-xs-12 col-sm-3 control-label no-padding-right">
                                     招聘人数
                                 </label>
 
                                 <div class="col-xs-12 col-sm-5">
                                     <span class="input-icon block">
-                                        <input type="text" id="inputError2" class="width-100">
-                                        <i class="ace-icon fa fa-times-circle red"></i>
+                                        <input type="number" placeholder="5人" id="txtNumber" name="number" class="width-100">
+                                        <i class="ace-icon fa fa-times-circle red hide"></i>
                                     </span>
-                                </div>
-                                <div class="help-block col-xs-12 col-sm-reset inline"> 如：Java程序员 </div>
-                            </div>
-                        </form>
-
-                        <form class="form-horizontal hide" id="frm-continue" method="get" novalidate="novalidate">
-
-
-                            <div class="form-group">
-                                <label for="inputError2" class="col-xs-12 col-sm-3 control-label no-padding-right">
-                                    经验要求
-                                </label>
-
-                                <div class="col-xs-12 col-sm-5">
-                                    <span class="input-icon block">
-                                        <input type="text" id="inputError2" class="width-100">
-                                        <i class="ace-icon fa fa-times-circle red"></i>
-                                    </span>
-                                </div>
-                                <div class="help-block col-xs-12 col-sm-reset inline"> 如：Java程序员 </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="inputError2" class="col-xs-12 col-sm-3 control-label no-padding-right">
-                                    最低学历
-                                </label>
-
-                                <div class="col-xs-12 col-sm-5">
-                                    <span class="input-icon block">
-                                        <input type="text" id="inputError2" class="width-100">
-                                        <i class="ace-icon fa fa-times-circle red"></i>
-                                    </span>
-                                </div>
-                                <div class="help-block col-xs-12 col-sm-reset inline"> 如：Java程序员 </div>
-                            </div>
-                        </form>
-
-                        <form class="form-horizontal" id="frm-full" method="get" novalidate="novalidate">
-
-                            <!--<script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>-->
-
-                            <div class="form-group">
-                                <label for="inputError2" class="col-xs-12 col-sm-3 control-label no-padding-right">
-                                    岗位职责
-                                </label>
-
-                                <div class="col-xs-12 col-sm-5">
-                                    <textarea id="form-field-11" class="autosize-transition form-control" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 92px;"></textarea>
-                                </div>
-                                <div class="help-block col-xs-12 col-sm-reset inline"></div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="inputError2" class="col-xs-12 col-sm-3 control-label no-padding-right">
-                                    职位要求
-                                </label>
-
-                                <div class="col-xs-12 col-sm-5">
-                                    <textarea id="form-field-12" class="autosize-transition form-control" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 92px;"></textarea>
-                                </div>
-                                <div class="help-block col-xs-12 col-sm-reset inline"></div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="inputError2" class="col-xs-12 col-sm-3 control-label no-padding-right">
-                                    福利待遇
-                                </label>
-
-                                <div class="col-xs-12 col-sm-5">
-                                    <textarea id="form-field-13" class="autosize-transition form-control" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 92px;"></textarea>
                                 </div>
                                 <div class="help-block col-xs-12 col-sm-reset inline"></div>
                             </div>
                         </form>
+
                     </div>
 
                     <div class="step-pane" data-step="2">
                         <div>
-                            <div class="alert alert-success">
-                                <button type="button" class="close" data-dismiss="alert">
-                                    <i class="ace-icon fa fa-times"></i>
-                                </button>
+                            <form class="form-horizontal" id="frm-continue" method="get" novalidate="novalidate">
 
-                                <strong>
-                                    <i class="ace-icon fa fa-check"></i>
-                                    Well done!
-                                </strong>
 
-                                You successfully read this important alert message.
-                                <br>
-                            </div>
+                                <div class="form-group">
+                                    <label for="txtSalary" class="col-xs-12 col-sm-3 control-label no-padding-right">
+                                        经验要求
+                                    </label>
 
-                            <div class="alert alert-danger">
-                                <button type="button" class="close" data-dismiss="alert">
-                                    <i class="ace-icon fa fa-times"></i>
-                                </button>
+                                    <div class="col-xs-12 col-sm-5">
+                                        <span class="input-icon block">
+                                            <select id="txtExperience" name="experience" class="width-100">
+                                                <option value="0">不限</option>
+                                                <?php for ($i = 1; $i < 11; $i ++) { ?>
+                                                    <option value="<?= $i; ?>"><?= $i; ?>年以上</option>
+                                                <?php } ?>
+                                            </select>
+                                        </span>
+                                    </div>
+                                </div>
 
-                                <strong>
-                                    <i class="ace-icon fa fa-times"></i>
-                                    Oh snap!
-                                </strong>
+                                <div class="form-group">
+                                    <label for="txtEducation" class="col-xs-12 col-sm-3 control-label no-padding-right">
+                                        学历要求
+                                    </label>
 
-                                Change a few things up and try submitting again.
-                                <br>
-                            </div>
+                                    <div class="col-xs-12 col-sm-5">
+                                        <span class="input-icon block">
+                                            <select id="txtEducation" name="education" class="width-100">
+                                                <option value="0">不限</option>
+                                                <?php $items = ['高中/中专/中技及以下', '大专及同等学历', '本科/学士及等同学历', '硕士/研究生及等同学历', '博士及以上', '其他']; ?>
+                                                <?php foreach ($items as $item) {?>
 
-                            <div class="alert alert-warning">
-                                <button type="button" class="close" data-dismiss="alert">
-                                    <i class="ace-icon fa fa-times"></i>
-                                </button>
-                                <strong>Warning!</strong>
-
-                                Best check yo self, you're not looking too good.
-                                <br>
-                            </div>
-
-                            <div class="alert alert-info">
-                                <button type="button" class="close" data-dismiss="alert">
-                                    <i class="ace-icon fa fa-times"></i>
-                                </button>
-                                <strong>Heads up!</strong>
-
-                                This alert needs your attention, but it's not super important.
-                                <br>
-                            </div>
+                                                    <option value="<?= $item; ?>"><?= $item; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </span>
+                                    </div>
+                                    <div class="help-block col-xs-12 col-sm-reset inline"></div>
+                                </div>
+                            </form>
                         </div>
                     </div>
 
                     <div class="step-pane" data-step="3">
                         <div class="center">
-                            <h3 class="blue lighter">This is step 3</h3>
+                            <form class="form-horizontal" id="frm-full" method="get" novalidate="novalidate">
+
+                                <!--<script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>-->
+
+                                <div class="form-group">
+                                    <label for="txtWelfareTreatment" class="col-xs-12 col-sm-3 control-label no-padding-right">
+                                        岗位职责
+                                    </label>
+
+                                    <div class="col-xs-12 col-sm-5">
+                                        <textarea id="txtWelfareTreatment" name="welfare_treatment" class="autosize-transition form-control" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 92px;"></textarea>
+                                    </div>
+                                    <div class="help-block col-xs-12 col-sm-reset inline"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="txtJobRequirement" class="col-xs-12 col-sm-3 control-label no-padding-right">
+                                        职位要求
+                                    </label>
+
+                                    <div class="col-xs-12 col-sm-5">
+                                        <textarea id="txtJobRequirement" name="job_requirement" class="autosize-transition form-control" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 92px;"></textarea>
+                                    </div>
+                                    <div class="help-block col-xs-12 col-sm-reset inline"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="txtJobDuties" class="col-xs-12 col-sm-3 control-label no-padding-right">
+                                        福利待遇
+                                    </label>
+
+                                    <div class="col-xs-12 col-sm-5">
+                                        <textarea id="txtJobDuties" name="job_duties" class="autosize-transition form-control" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 92px;"></textarea>
+                                    </div>
+                                    <div class="help-block col-xs-12 col-sm-reset inline"></div>
+                                </div>
+                            </form>
                         </div>
                     </div>
 
@@ -348,6 +272,7 @@ js;
 
 \Asset::js($script, [], 'before-script', true);
 \Asset::js([
+    '//cdn.bootcss.com/parsley.js/2.6.2/parsley.min.js',
     'jquery-tmpl/jquery.tmpl.min.js',
     'jquery-tmpl/jquery.tmplPlus.min.js',
     //'ueditor/ueditor.config.js',

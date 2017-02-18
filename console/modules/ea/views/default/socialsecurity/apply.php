@@ -52,65 +52,65 @@
                             <span class="lbl"></span>
                         </label>
                     </th>
-                    <th>职位名称</th>
-                    <th>所属公司</th>
-                    <th>月薪</th>
-                    <th>工作地点</th>
+                    <th>申请人</th>
+                    <th>类别</th>
+                    <th>缴费周期</th>
+                    <th>缴费城市</th>
                     <th>工作性质</th>
                     <th>经验要求</th>
                     <th>最低学历</th>
                     <th>招聘人数</th>
-                    <th style="width: 100px;">发布/更新时间</th>
+                    <th style="width: 100px;">申请时间</th>
                     <th style="100px;">操作</th>
                 </tr>
                 </thead>
                 <tbody id="items">
 
-                    <tr>
-                        <td colspan="11" style="text-align: center">
-                            <i class="fa fa-spinner fa-spin"></i>
-                            数据加载中...
-                        </td>
-                    </tr>
+                <tr>
+                    <td colspan="11" style="text-align: center">
+                        <i class="fa fa-spinner fa-spin"></i>
+                        数据加载中...
+                    </td>
+                </tr>
 
                 </tbody>
                 <tfoot id="handle">
-                    <tr>
-                        <th colspan="11">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <div class="btn-group">
-                                        <button data-toggle="dropdown" class="btn btn-primary btn-white dropdown-toggle" aria-expanded="false">
-                                            批量
-                                            <i class="ace-icon fa fa-angle-down icon-on-right"></i>
-                                        </button>
+                <tr>
+                    <th colspan="11">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="btn-group">
+                                    <button data-toggle="dropdown" class="btn btn-primary btn-white dropdown-toggle" aria-expanded="false">
+                                        批量
+                                        <i class="ace-icon fa fa-angle-down icon-on-right"></i>
+                                    </button>
 
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <a role="btnBatchUpdate">更新</a>
-                                            </li>
-                                            <li>
-                                                <a role="btnSendToWechat">微信推送</a>
-                                            </li>
-                                            <li class="divider"></li>
-                                            <li>
-                                                <a role="btnBatchDelete">删除</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6 text-right">
-                                    当前第 <span role="page_index">0</span> 页, 共 <span role="page_total">0</span> 页
-                                    &nbsp;&nbsp;&nbsp;
-                                    跳转至
-                                    <input role="txtCurrentPage" type="text" value="" placeholder="" class="form-control text-center" style="display: inline; width: 50px;"/>
-                                    <a class="btn btn-sm btn-primary" role="btnGo">Go</a>
-                                    <a class="btn btn-sm btn-info" role="btnPrevious">Previous</a>
-                                    <a class="btn btn-sm btn-info" role="btnNext">Next</a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a role="btnBatchUpdate">更新</a>
+                                        </li>
+                                        <li>
+                                            <a role="btnSendToWechat">微信推送</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a role="btnBatchDelete">删除</a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                        </th>
-                    </tr>
+                            <div class="col-xs-6 text-right">
+                                当前第 <span role="page_index">0</span> 页, 共 <span role="page_total">0</span> 页
+                                &nbsp;&nbsp;&nbsp;
+                                跳转至
+                                <input role="txtCurrentPage" type="text" value="" placeholder="" class="form-control text-center" style="display: inline; width: 50px;"/>
+                                <a class="btn btn-sm btn-primary" role="btnGo">Go</a>
+                                <a class="btn btn-sm btn-info" role="btnPrevious">Previous</a>
+                                <a class="btn btn-sm btn-info" role="btnNext">Next</a>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
                 </tfoot>
             </table>
         </div>
@@ -152,7 +152,9 @@ js;
         ${name}
     </td>
     <td>
-        ${company}
+        <label class="label label-primary">公司</label>
+
+        <label class="label label-warning">个人</label>
     </td>
     <td>
         ${salary_begin}元 - ${salary_end}元
@@ -173,16 +175,18 @@ js;
         ${number}
     </td>
     <td>
-        <span class="label label-success">${created_date}</span>
+        {{if created_at > 0}}
+            <span class="label label-success">${created_date}</span>
+           {{/if}}
         {{if updated_at > 0}}
             <span class="label label-warning">${updated_date}</span>
         {{/if}}
     </td>
     <td>
-        <a href="/ea/job/save/${id}" class="btn btn-sm btn-primary" role="btnSave">
+        <a href="/ea/job/save/${id}" class="btn btn-sm btn-primary hide" role="btnSave">
             <i class="fa fa-edit"></i> 编辑
         </a>
-        <a class="btn btn-sm btn-success" role="btnRefresh">
+        <a class="btn btn-sm btn-success hide" role="btnRefresh">
             <i class="fa fa-refresh"></i> 更新
         </a>
         <a class="btn btn-sm btn-danger" role="btnDel">

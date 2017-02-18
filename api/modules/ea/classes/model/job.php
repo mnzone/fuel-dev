@@ -17,7 +17,7 @@
 
 namespace ea;
 
-class Model_Job extends \Orm\Model
+class Model_Job extends Model_BaseModel
 {
     /**
      * @var  string  table name to overwrite assumption

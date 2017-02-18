@@ -1,5 +1,5 @@
 /**
- * Created by ray on 17-2-16.
+ * Created by ray on 17-2-18.
  */
 $(function () {
 
@@ -169,11 +169,11 @@ $(function () {
             }
         })
     });
-    
+
     $('a[role=txtCurrentPage]').keyup(function () {
         var val = $(this).val();
         if(isNaN(val)
-           || parseInt(val) <= 1 || parseInt(val) > _total_page){
+            || parseInt(val) <= 1 || parseInt(val) > _total_page){
             return false;
         }
 
@@ -223,7 +223,7 @@ function reload() {
 
     var params = '&start=' + _page_index;
 
-    var remote = _api_host + '/ea/job/list.json?access_token=' + _access_token + params;
+    var remote = _api_host + '/ea/candidate/list.json?access_token=' + _access_token + params;
     remote = window.btoa(remote);
 
     $.get('/crossdomainproxy?remote=' + remote,

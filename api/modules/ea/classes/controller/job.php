@@ -84,31 +84,14 @@ class Controller_Job extends Controller_BaseController
     public function get_list(){
         $this->result = ['status' => 'succ', 'msg' => 'ok', 'errcode' => 0];
 
-        $job = Model_Job::query()
+        $query = Model_Job::query()
+            ->select(['is_deleted' => false])
             ->where([
                 'is_deleted' => 0
             ])
             ->order_by(['updated_at' => 'desc', 'id' => 'desc', 'created_at' => 'desc']);
 
-        //分页查询
-        $count = $job->count();
-        $config = array(
-            'pagination_url' => "/ea/job/list.json",
-            'total_items'    => $count,
-            'per_page'       => \Input::get('count', 10),
-            'uri_segment'    => 'start',
-            'show_first'     => true,
-            'show_last'      => true,
-            'name'           => 'bootstrap3_cn' . (\Input::is_ajax() ? '_ajax' : '')
-        );
-
-        $pagination = new \Pagination($config);
-
-        $job->order_by(['created_at' => 'desc', 'id' => 'desc']);
-        $result = $job
-            ->rows_offset($pagination->offset)
-            ->rows_limit($pagination->per_page)
-            ->get();
+        list($result, $pagination) = Model_Job::get_pagination($query);
 
         $items = [];
         foreach ($result as $item){

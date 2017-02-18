@@ -18,7 +18,15 @@
     <li<?= \Input::uri() == '/ea/candidate' ? ' class="active"' : '' ?>>
         <a href="/ea/candidate">
             <i class="menu-icon fa fa-tachometer"></i>
-            <span class="menu-text"> 报名列表 </span>
+            <span class="menu-text"> 职位申请 </span>
+        </a>
+
+        <b class="arrow"></b>
+    </li>
+    <li<?= \Input::uri() == '/ea/socialsecurity/apply' ? ' class="active"' : '' ?>>
+        <a href="/ea/socialsecurity/apply">
+            <i class="menu-icon fa fa-tachometer"></i>
+            <span class="menu-text"> 社保报名 </span>
         </a>
 
         <b class="arrow"></b>
