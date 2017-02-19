@@ -8,34 +8,24 @@
  */
 abstract class Controller_BaseController extends \Fuel\Core\Controller_Rest
 {
-    protected $cross_domain = false;
-    protected $result = ['status' => 'err', 'msg' => '', 'errcode' => -1];
+    protected $cross_domain = false;            // 判断是否跨域访问
+    protected $result = [];                     // 返回数据结果统计格式
+    protected $user = false;                    // 用户实体
+    protected $store = false;                   // 商户门店实体
+    protected $wechat = false;                  // 微信帐户实体
+    protected $wechat_openid = false;           // 微信帐户OPENID实体
+    protected $mp_account = false;              // 微信公众号实体
+    protected $seller = false;                  // 商户实体
 
     public function before(){
         parent::before();
-
-        if (\Fuel::$env !== Fuel::PRODUCTION) {
-            return;
-        }
-
-        // 获取来源网站
-        $from = parse_url(\Input::referrer());
-
-        // 判断来源网站是否允许访问
-        if( ! $from || ! isset($from['host']) || ! $this->get_allow_domain($from['host'])){
-            $this->result = [
-                'status' => 'err',
-                'msg' => 'permission denied'
-            ];
-
-            $this->response($this->result, 404);
-        }
+        $this->result = ['status' => 'err', 'msg' => '', 'errcode' => -1];
     }
 
     public function after($response){
-
+        /*
         //跨域访问
-        if($this->cross_domain){
+        if($this->cross_domain && \Input::get('callback', false)){
             // 数据json格式化
             $json = json_encode($this->result);
 
@@ -44,8 +34,75 @@ abstract class Controller_BaseController extends \Fuel\Core\Controller_Rest
             $result = "{$callback}({$json})";
             die($result);
         }
+        */
 
         return parent::after($response);
+    }
+
+    public function action_404(){
+        $this->response([], 404);
+    }
+
+    /**
+     * 访问鉴权
+     * @return bool
+     */
+    public function auth_user(){
+
+        if($this->get_not_token_allowed()){
+            return true;
+        }
+
+        if( ! \Input::get('access_token', false)) {
+            return false;
+        }
+
+        $value = false;
+
+        $key = base64_decode(\Input::get('access_token'));
+
+        try {
+            $value = \Cache::get($key);
+        } catch (\CacheNotFoundException $e){
+        }
+
+        // 未找到访问凭证,拒绝访问
+        if( ! $value){
+            return false;
+        }
+
+        $data = json_decode(json_encode(unserialize($value)));
+        $this->user = \Model_User::find($data->user_id);
+
+        if(isset($data->openid) && $data->openid){
+            $this->wechat_openid = \Model_WechatOpenid::find($data->openid);
+            $this->wechat = $this->wechat_openid->wechat;
+            $this->mp_account = \Model_WXAccount::find($this->wechat_openid->openid);
+            $this->seller = $this->wx_account->seller;
+        }
+
+        return true;
+    }
+
+    /**
+     * 鉴权
+     * @return bool
+     */
+    public function auth(){
+
+        /*if( ! $this->get_not_token_allowed() || ! \Input::get('access_token', false)){
+            return false;
+        }*/
+
+        $allow = true;
+
+        // 获取来源网站
+        $from = parse_url(\Input::referrer());
+        // 判断来源网站是否允许访问
+        if( ! $from || ! isset($from['host']) || ! $this->get_allow_domain($from['host'])){
+            $allow = false;
+        }
+        return $allow;
     }
 
     /**
@@ -70,5 +127,60 @@ abstract class Controller_BaseController extends \Fuel\Core\Controller_Rest
             && $domain == $host);
 
         return $this->cross_domain && in_array($domain, $allows);
+    }
+
+    /**
+     * 允许没有token时的访问列表
+     *
+     * @return array
+     */
+    protected function get_not_token_allowed(){
+        $allowed = [
+            [
+                'module' => 'api',
+                'controllers' => [
+                    'account' => [
+                        'login', 'logout', 'register'
+                    ]
+                ]
+            ],
+            /* 该项配置必须是最后一项 */
+            [
+                'module' => false,
+                'controllers' => [
+                    'auth' => [
+                        'token', 'refuulef'
+                    ]
+                ]
+            ]
+        ];
+
+        $allow = false;
+        foreach($allowed as $item){
+
+            if(! $item['module']){
+                $allow = $this->compare($item['controllers'], \Uri::segment(1, ''), \Uri::segment(2, ''));
+                break;
+            }else if($item['module'] == \Uri::segment(1, '')){
+                $allow = ! $item['controllers'] || $this->compare($item['controllers'], \Uri::segment(2, ''), \Uri::segment(3, ''));
+                break;
+            }
+        }
+
+        return $allow;
+    }
+
+    private function compare($controllers, $controller, $method = false){
+        foreach ($controllers as $key => $value){
+            if($key == $controller){
+                if( ! $value){
+                    return true;
+                }
+
+                //是否存在于数据中，存在则无需登录
+                return in_array($method, $value);
+            }
+        }
+        return false;
     }
 }

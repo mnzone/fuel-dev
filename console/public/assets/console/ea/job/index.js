@@ -226,8 +226,12 @@ function reload() {
     var remote = _api_host + '/ea/job/list.json?access_token=' + _access_token + params;
     remote = window.btoa(remote);
 
-    $.get('/crossdomainproxy?remote=' + remote,
-        function (data) {
+    $.ajax({
+        url: '/crossdomainproxy?remote=' + remote,
+        type: 'get',
+        dataType: 'json',
+        success:function (data) {
+
             if(data.status == 'err'){
                 return;
             }
@@ -250,8 +254,14 @@ function reload() {
                 items[i].updated_date = timetodate('Y-m-d H:i:s', items[i].updated_at);
                 table.append(tr, items[i], null);
             }
-
-        }, 'json');
+        },
+        complete: function (xhr, ts) {
+            console.log('complate');
+        },
+        error: function (xhr, msg) {
+            console.log('error:' + msg);
+        }
+    });
 }
 
 function get_ids(action) {

@@ -54,7 +54,7 @@ return array(
 	| or define a method name in your REST controller that handles authorization
 	|
 	*/
-	'auth' => '',
+	'auth' => 'auth',
 
 	/*
 	| array of usernames and passwords for login
