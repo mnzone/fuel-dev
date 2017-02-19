@@ -16,6 +16,7 @@ abstract class Controller_BaseController extends \Fuel\Core\Controller_Rest
     protected $wechat_openid = false;           // 微信帐户OPENID实体
     protected $mp_account = false;              // 微信公众号实体
     protected $seller = false;                  // 商户实体
+    protected $version = 1;                     // 客户端调用的版本号
 
     public function before(){
         parent::before();
@@ -47,7 +48,9 @@ abstract class Controller_BaseController extends \Fuel\Core\Controller_Rest
      * 访问鉴权
      * @return bool
      */
-    public function auth_user(){
+    public function auth(){
+
+        $this->version = $this->get_api_verion();
 
         if($this->get_not_token_allowed()){
             return true;
@@ -88,7 +91,7 @@ abstract class Controller_BaseController extends \Fuel\Core\Controller_Rest
      * 鉴权
      * @return bool
      */
-    public function auth(){
+    public function auth_bak(){
 
         /*if( ! $this->get_not_token_allowed() || ! \Input::get('access_token', false)){
             return false;
@@ -182,5 +185,24 @@ abstract class Controller_BaseController extends \Fuel\Core\Controller_Rest
             }
         }
         return false;
+    }
+
+    /**
+     * 获取手机客户端调用API的版本号
+     *
+     * @return int|string
+     */
+    private function get_api_verion(){
+
+        $value = 0;
+
+        $accept = \Input::server('HTTP_ACCEPT');
+
+        $index = strpos($accept, 'version=');
+        if($index !== false){
+            $value = substr($accept, $index + 8);
+        }
+
+        return $value;
     }
 }
