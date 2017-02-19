@@ -1,0 +1,176 @@
+
+body {
+    padding-bottom: 55px;
+}
+
+a, button, input {
+    -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+}
+
+ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.top_bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+}
+
+    .top_bar li {
+        float: left;
+        width: 25%;
+        height: 55px;
+        color: #999999;
+        text-align: center;
+    }
+
+.top_wenzi {
+    margin-top: 5px;
+}
+
+/*#menu_list2 {
+    position: fixed;
+    z-index: 2;
+    bottom: 0;
+    width: 100%;
+}
+
+#fade {
+    display: none;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 1001;
+    -moz-opacity: 0.6;
+    opacity: .60;
+    filter: alpha(opacity=60);
+}
+
+#light {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    background-color: #F2F2F2;
+    z-index: 1002;
+    overflow: auto;
+}
+
+.list-1 {
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    border-bottom: 1px solid #B2B2B2;
+    font-size: 18px;
+    color: #9A9A9A;
+    background-color: white;
+}*/
+
+li a {
+    color: #999999;
+}
+
+.box {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    bottom:0;
+    display: none;
+}
+
+.box1 {
+    width: 100%;
+    height: 150px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+.otherWay li {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+}
+
+    .otherWay li:last-child {
+        border-bottom: none;
+        border-top:3px solid #dddddd;
+    }
+
+/*人人保底部引流*/
+.yinliubox{
+    width:100%;
+    height:55px;
+    position:fixed;
+    bottom:0;
+    background:rgba(0, 0, 0, 0.8)!important;
+    filter:Alpha(opacity=80); background:black; /*　使用IE专属滤镜实现IE背景透明*/ 
+    font-size:16px;
+    color:white;
+    text-align:center;
+}
+.yinliu_close{
+    width:3%;
+    
+}
+.yinliu{
+    padding:0 1rem;
+    margin-top:5px;
+
+}
+.yinliu span{
+    float:left;
+    margin-left:10px;
+    margin-top:0.2rem;
+}
+.yinliu img{
+    float:left;
+    margin-left:1rem;
+}
+.yinliu-nowdown{
+    width:25%;
+    height:27px;
+    background:#37C883;
+    border-radius:5px;
+    float:right;
+    font-size:15px;
+    line-height:27px;
+}
+
+
+@font-face {font-family: "iconfont";
+  src: url('../iconfont/iconfont.eot?t=1477289204'); /* IE9*/
+  src: url('../iconfont/iconfont.eot?t=1477289204#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../iconfont/iconfont.woff?t=1477289204') format('woff'), /* chrome, firefox */
+  url('../iconfont/iconfont.ttf?t=1477289204') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../iconfont/iconfont.svg?t=1477289204#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 22px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+    display: block;
+    padding-top: 7px;
+}
+
+.icon-shouye-copy:before { content: "\e600"; }
+.icon-dianhuazixun:before { content: "\e668"; }
+.icon-zaixianzixun:before { content: "\e626"; }
+.icon-gerenzhongxin:before { content: "\e606"; }

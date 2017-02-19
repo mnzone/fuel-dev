@@ -1,0 +1,157 @@
+﻿@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+    .infoList {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        border-top: 1px solid #f3f3f3;
+    }
+    .item {
+        position: relative;
+        background-color: #fff;
+        margin-bottom: .26667rem;
+        max-height: 999px;
+        overflow: hidden;
+    }
+    li {
+        display: block;
+    }
+    .item .item-shenqing-style {
+        position: absolute;
+        right: 0;
+        height: 100%;
+        width: 2rem;
+        z-index: 100;
+    }
+    .item .item-shenqing-style .shenqing-btn {
+        font-size: .34667rem;
+        position: absolute;
+        top: 1.2rem;
+        right: .4rem;
+        color: #fff;
+        width: 1.28rem;
+        height: .72rem;
+        line-height: .72rem;
+        text-align: center;
+        background-color: #f86747;
+        border-radius: .06667rem;
+        top: 2.2rem;
+        right: .4rem;
+        line-height:27px;
+        font-size: 13px;
+        width: 48px;
+        height: 27px;
+    }
+    .item .item-type {
+        font-size: .29333rem;
+        position: absolute;
+        top: .53333rem;
+        right: .4rem;
+        color: #b0b0b0;
+    }
+    .item .item-content {
+        display: block;
+        padding: .4rem .4rem 0;
+        padding: 10px 10px 0;
+    }
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    .item .item-content-up {
+        width: 80%;
+    }
+    .item .item-title {
+        overflow: hidden;
+        -webkit-text-overflow: ellipsis;
+        -ms-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: .38667rem;
+        line-height: .46667rem;
+        color: #404040;
+        margin-bottom: .26667rem;
+        
+        height: 17px;
+        line-height: 20px;
+        margin-bottom: 10px;
+        font-size: 13px;
+    }
+    .item .item-desc {
+        line-height: .4rem;
+        margin-bottom: .2rem;
+        line-height:16px;
+        margin-bottom: 10px;
+    }
+    .item .item-welfare {
+        overflow: hidden;
+        -webkit-text-overflow: ellipsis;
+        -ms-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: #15b4e9;
+        font-size: .29333rem;
+        /*line-height: .4rem;
+        margin-bottom: .16rem;*/
+        height: 22.5px;
+        line-height:22.5px;
+        margin-bottom: 10px;
+    }
+    .item .item-welfare .tag {
+        /*display: inline-block;
+        padding: 0 1px;
+        border: 1px solid #15b4e9;
+        -webkit-border-radius: .05333rem;
+        -moz-border-radius: .05333rem;
+        border-radius: .05333rem;*/
+        display: inline-block;
+        height: 15px;
+        padding: 0 1px;
+        border: 1px solid #15b4e9;
+        font-size: 12px;
+        line-height: 17px;
+    }
+    .item .item-desc .item-salary {
+        font-size: .37333rem;
+        color: #ff552e;
+    }
+    .item .item-desc .item-unit {
+        font-size: .32rem;
+        color: #ff552e;
+    }
+    .item .item-desc .item-cate {
+        font-size: .32rem;
+        color: gray;
+        margin-left: .70312rem;
+    }
+    .item .item-content-down {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        color: gray;
+        border-top: 1px dashed #cacaca;
+    }
+    .item .item-content-down .item-company {
+        overflow: hidden;
+        -webkit-text-overflow: ellipsis;
+        -ms-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        -webkit-box-flex: 6;
+        -webkit-flex: 6;
+        -ms-flex: 6;
+        flex: 6;
+        max-width: 58%;
+    }
+    .item .item-content-down .content-down {    
+        font-size: 12PX;
+        line-height: 31px;
+    }
+    .item-addr{
+        width: 50%;text-align: right;
+    }
