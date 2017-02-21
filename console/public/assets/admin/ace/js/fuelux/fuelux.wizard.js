@@ -381,7 +381,7 @@
 
 	$.fn.wizard.defaults = {
 		disablePreviousStep: false,
-		selectedItem: { step: -1 }	//-1 means it will attempt to look for "active" class in order to set the step
+		selectedItem: { step: -1 }	//-1 means it will attempt to look for "active" class in mall to set the step
 	};
 
 	$.fn.wizard.Constructor = Wizard;

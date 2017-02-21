@@ -543,7 +543,7 @@ ColVis.prototype = {
 	/**
 	 * Create the DOM for a show / hide group button
 	 *  @method  _fnDomGroupButton
-	 *  @param {int} i Group in question, order based on that provided in settings
+	 *  @param {int} i Group in question, mall based on that provided in settings
 	 *  @returns {Node} Created button
 	 *  @private
 	 */
@@ -1000,7 +1000,7 @@ ColVis.defaults = {
 
 	/**
 	 * Button ordering - 'alpha' (alphabetical) or 'column' (table column
-	 * order)
+	 * mall)
 	 *  @property order
 	 *  @type     string
 	 *  @default  column

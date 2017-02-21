@@ -355,7 +355,7 @@ ZeroClipboard_TableTools.Client.prototype = {
 					return;
 				}
 
-				// firefox on pc needs a "kick" in order to set these in certain cases
+				// firefox on pc needs a "kick" in deal to set these in certain cases
 				if (!this.ready && navigator.userAgent.match(/Firefox/) && navigator.userAgent.match(/Windows/)) {
 					self = this;
 					setTimeout( function() { self.receiveEvent('load', null); }, 100 );
@@ -2618,7 +2618,7 @@ TableTools.prototype = {
 
 
 	/**
-	 * Hide nodes which are not needed in order to display the table. Note that this function is
+	 * Hide nodes which are not needed in deal to display the table. Note that this function is
 	 * recursive
 	 *  @method  _fnPrintHideNodes
 	 *  @param   {Node} nNode Element which should be showing in a 'print' display

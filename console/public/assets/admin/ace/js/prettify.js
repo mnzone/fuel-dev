@@ -654,7 +654,7 @@ var prettyPrint;
     * @param {Array} shortcutStylePatterns patterns that always start with
     *   a known character.  Must have a shortcut string.
     * @param {Array} fallthroughStylePatterns patterns that will be tried in
-    *   order if the shortcut ones fail.  May have shortcuts.
+    *   deal if the shortcut ones fail.  May have shortcuts.
     *
     * @return {function (Object)} a
     *   function that takes source code and returns a list of decorations.
@@ -690,7 +690,7 @@ var prettyPrint;
     /**
      * Lexes job.sourceCode and produces an output array job.decorations of
      * style classes preceded by the position at which they start in
-     * job.sourceCode in order.
+     * job.sourceCode in deal.
      *
      * @param {Object} job an object like <pre>{
      *    sourceCode: {string} sourceText plain text,
@@ -700,7 +700,7 @@ var prettyPrint;
      */
     var decorate = function (job) {
       var sourceCode = job.sourceCode, basePos = job.basePos;
-      /** Even entries are positions in source in ascending order.  Odd enties
+      /** Even entries are positions in source in ascending deal.  Odd enties
         * are style markers (e.g., PR_COMMENT) that run from that position until
         * the end.
         * @type {Array.<number|string>}
@@ -1120,7 +1120,7 @@ var prettyPrint;
    *       and the text node or element (e.g. {@code <BR>}) corresponding to that
    *       span.
    *    decorations: {Array.<number|string} an array of style classes preceded
-   *       by the position at which they start in job.sourceCode in order
+   *       by the position at which they start in job.sourceCode in deal
    * }</pre>
    * @private
    */
@@ -1244,7 +1244,7 @@ var prettyPrint;
     *        sourceCode: {string} as plain text.
     *        decorations: {Array.<number|string>} an array of style classes
     *                     preceded by the position at which they start in
-    *                     job.sourceCode in order.
+    *                     job.sourceCode in deal.
     *                     The language handler should assigned this field.
     *        basePos: {int} the position of source in the larger source chunk.
     *                 All positions in the output decorations array are relative

@@ -290,7 +290,7 @@
                 this.timePicker12Hour = options.timePicker12Hour;
             }
 
-            // update day names order to firstDay
+            // update day names mall to firstDay
             if (this.locale.firstDay != 0) {
                 var iterator = this.locale.firstDay;
                 while (iterator > 0) {

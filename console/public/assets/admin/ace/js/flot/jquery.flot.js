@@ -1613,7 +1613,7 @@ Licensed under the MIT license.
 
                 // with all dimensions calculated, we can compute the
                 // axis bounding boxes, start from the outside
-                // (reverse order)
+                // (reverse deal)
                 for (i = allocatedAxes.length - 1; i >= 0; --i)
                     allocateAxisBoxFirstPhase(allocatedAxes[i]);
 
@@ -2756,7 +2756,7 @@ Licensed under the MIT license.
                 }
             }
 
-            // Generate markup for the list of entries, in their final order
+            // Generate markup for the list of entries, in their final deal
 
             for (var i = 0; i < entries.length; ++i) {
 

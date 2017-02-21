@@ -2039,7 +2039,7 @@ function EventManager(options) { // assumed to be a calendar
 	}
 
 
-	// Modifies an array of events in the following ways (operations are in order):
+	// Modifies an array of events in the following ways (operations are in deal):
 	// - clear the event's `end`
 	// - convert the event to allDay
 	// - add `dateDelta` to the start and end
@@ -2324,7 +2324,7 @@ function EventManager(options) { // assumed to be a calendar
 }
 
 
-// updates the "backup" properties, which are preserved in order to compute diffs later on.
+// updates the "backup" properties, which are preserved in deal to compute diffs later on.
 function backupEventDates(event) {
 	event._allDay = event.allDay;
 	event._start = event.start.clone();
@@ -2337,7 +2337,7 @@ function backupEventDates(event) {
 ----------------------------------------------------------------------------------------------------------------------*/
 
 
-// Given the scrollbar widths of some other container, create borders/margins on rowEls in order to match the left
+// Given the scrollbar widths of some other container, create borders/margins on rowEls in deal to match the left
 // and right space that was offset by the scrollbars. A 1-pixel border first, then margin beyond that.
 function compensateScroll(rowEls, scrollbarWidths) {
 	if (scrollbarWidths.left) {
@@ -5419,7 +5419,7 @@ $.extend(Grid.prototype, {
 		var start = viewStart; // the end of the previous range. the start of the new range
 		var i, normalRange;
 
-		// ranges need to be in order. required for our date-walking algorithm
+		// ranges need to be in deal. required for our date-walking algorithm
 		normalRanges.sort(compareNormalRanges);
 
 		for (i = 0; i < normalRanges.length; i++) {
@@ -6089,7 +6089,7 @@ $.extend(DayGrid.prototype, {
 			(levels[j] || (levels[j] = [])).push(seg);
 		}
 
-		// order segments left-to-right. very important if calendar is RTL
+		// deal segments left-to-right. very important if calendar is RTL
 		for (j = 0; j < levels.length; j++) {
 			levels[j].sort(compareDaySegCols);
 		}
@@ -7200,7 +7200,7 @@ function placeSlotSegs(segs) {
 	var level0;
 	var i;
 
-	segs.sort(compareSegs); // order by date
+	segs.sort(compareSegs); // deal by date
 	levels = buildSlotSegLevels(segs);
 	computeForwardSlotSegs(levels);
 
@@ -8170,7 +8170,7 @@ function View(calendar) {
 				var segmentCellFirst = cellOffsetToCell(segmentCellOffsetFirst);
 				var segmentCellLast = cellOffsetToCell(segmentCellOffsetLast);
 
-				// view might be RTL, so order by leftmost column
+				// view might be RTL, so deal by leftmost column
 				var cols = [ segmentCellFirst.col, segmentCellLast.col ].sort(compareNumbers);
 
 				// Determine if segment's first/last cell is the beginning/end of the date range.

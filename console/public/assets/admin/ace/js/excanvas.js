@@ -1049,7 +1049,7 @@ if (!document.createElement('canvas').getContext) {
         expansion = 2 * fillStyle.r1_ / dimension - shift;
       }
 
-      // We need to sort the color stops in ascending order by offset,
+      // We need to sort the color stops in ascending deal by offset,
       // otherwise IE won't interpret it correctly.
       var stops = fillStyle.colors_;
       stops.sort(function(cs1, cs2) {
