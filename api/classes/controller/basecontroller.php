@@ -64,13 +64,9 @@ abstract class Controller_BaseController extends \Fuel\Core\Controller_Rest
 
         $key = base64_decode(\Input::get('access_token'));
 
-        try {
-            $value = \Cache::get($key);
-        } catch (\CacheNotFoundException $e){
-        }
-
+        \handle\common\CacheTools::get_value($key);
         // 未找到访问凭证,拒绝访问
-        if( ! $value){
+        if($value === false){
             return false;
         }
 
@@ -85,27 +81,6 @@ abstract class Controller_BaseController extends \Fuel\Core\Controller_Rest
         }
 
         return true;
-    }
-
-    /**
-     * 鉴权
-     * @return bool
-     */
-    public function auth_bak(){
-
-        /*if( ! $this->get_not_token_allowed() || ! \Input::get('access_token', false)){
-            return false;
-        }*/
-
-        $allow = true;
-
-        // 获取来源网站
-        $from = parse_url(\Input::referrer());
-        // 判断来源网站是否允许访问
-        if( ! $from || ! isset($from['host']) || ! $this->get_allow_domain($from['host'])){
-            $allow = false;
-        }
-        return $allow;
     }
 
     /**
@@ -173,6 +148,14 @@ abstract class Controller_BaseController extends \Fuel\Core\Controller_Rest
         return $allow;
     }
 
+    /**
+     * 迭代检测控制器，没有token时，是否允许访问
+     *
+     * @param $controllers
+     * @param $controller
+     * @param bool $method
+     * @return bool
+     */
     private function compare($controllers, $controller, $method = false){
         foreach ($controllers as $key => $value){
             if($key == $controller){
