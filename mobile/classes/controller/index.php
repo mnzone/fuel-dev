@@ -84,4 +84,7 @@ class Controller_Index extends Controller_BaseController
 
     }
 
+    public function action_test(){
+    }
+
 }
