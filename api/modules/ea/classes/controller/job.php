@@ -81,6 +81,10 @@ class Controller_Job extends Controller_BaseController
         $this->response($this->result, 200);
     }
 
+    public function get_index(){
+        $this->get_list();
+    }
+
     public function get_list(){
         $this->result = ['status' => 'succ', 'msg' => 'ok', 'errcode' => 0];
 
@@ -141,4 +145,6 @@ class Controller_Job extends Controller_BaseController
         $this->result = ['status' => 'err', 'msg' => 'patch save'];
         $this->response($this->result, 200);
     }
+
+
 }

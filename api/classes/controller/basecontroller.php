@@ -89,19 +89,19 @@ abstract class Controller_BaseController extends \Fuel\Core\Controller_Rest
      * @return bool
      */
     public function auth(){
-
-        /*if( ! $this->get_not_token_allowed() || ! \Input::get('access_token', false)){
+        if( ! $this->get_not_token_allowed() && ! \Input::get('access_token', false)){
             return false;
-        }*/
+        }
 
         $allow = true;
 
         // 获取来源网站
-        $from = parse_url(\Input::referrer());
-        // 判断来源网站是否允许访问
-        if( ! $from || ! isset($from['host']) || ! $this->get_allow_domain($from['host'])){
-            $allow = false;
-        }
+//        $from = parse_url(\Input::referrer());
+//        // 判断来源网站是否允许访问
+//        if( ! $from || ! isset($from['host']) || ! $this->get_allow_domain($from['host'])){
+//            $allow = false;
+//        }
+
         return $allow;
     }
 
@@ -117,9 +117,10 @@ abstract class Controller_BaseController extends \Fuel\Core\Controller_Rest
             'console.fuel-dev.ray',
             'api.fuel-dev.ray',
             'mobile.fuel-dev.ray',
-            'web.fuel-dev.ray'
+            'web.fuel-dev.ray',
+            'm.fuel.ray'
         ];
-
+        \Log::error('abcd');
         $host = parse_url(\Config::get('base_url'))['host'];
 
         // 是否本机访问

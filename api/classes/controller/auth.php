@@ -15,10 +15,10 @@ class Controller_Auth extends Controller_BaseController
 
     public function post_token(){
         $data = [
-            'user_id' => 1
+            'user_id' => \Input::post('id', 1)
         ];
 
-        $expires = 7200;
+        $expires = 60 * 60;
 
         $reresh_token_key = md5(\Str::random('alnum', 32));
         $access_token_key = md5(\Str::random('alpha', 32));
