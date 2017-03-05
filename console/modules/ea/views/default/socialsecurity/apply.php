@@ -10,7 +10,7 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th colspan="11">
+                    <th colspan="13">
                         <div class="row">
                             <div class="col-xs-6">
                                 <div class="btn-group">
@@ -53,13 +53,15 @@
                         </label>
                     </th>
                     <th>申请人</th>
-                    <th>类别</th>
-                    <th>缴费周期</th>
-                    <th>缴费城市</th>
-                    <th>工作性质</th>
-                    <th>经验要求</th>
-                    <th>最低学历</th>
-                    <th>招聘人数</th>
+                    <th>手机号</th>
+                    <th>身份证</th>
+                    <th>参保项目</th>
+                    <th>参保城市</th>
+                    <th>人员类别</th>
+                    <th>服务内容</th>
+                    <th>付费方式</th>
+                    <th>缴费月份</th>
+                    <th>社保基数</th>
                     <th style="width: 100px;">申请时间</th>
                     <th style="100px;">操作</th>
                 </tr>
@@ -67,7 +69,7 @@
                 <tbody id="items">
 
                 <tr>
-                    <td colspan="11" style="text-align: center">
+                    <td colspan="13" style="text-align: center">
                         <i class="fa fa-spinner fa-spin"></i>
                         数据加载中...
                     </td>
@@ -76,7 +78,7 @@
                 </tbody>
                 <tfoot id="handle">
                 <tr>
-                    <th colspan="11">
+                    <th colspan="13">
                         <div class="row">
                             <div class="col-xs-6">
                                 <div class="btn-group">
@@ -152,27 +154,31 @@ js;
         ${name}
     </td>
     <td>
-        <label class="label label-primary">公司</label>
-
-        <label class="label label-warning">个人</label>
+        ${cellphone}
     </td>
     <td>
-        ${salary_begin}元 - ${salary_end}元
+        ${identity}
     </td>
     <td>
-        ${working_place}
+        ${item}
     </td>
     <td>
-        ${job_category}
+        ${city}
     </td>
     <td>
-        ${experience}
+        ${type}
     </td>
     <td>
-        ${education}
+        ${service}
     </td>
     <td>
-        ${number}
+        ${payment_method}
+    </td>
+    <td>
+        ${month}
+    </td>
+    <td>
+        ${base_fee}
     </td>
     <td>
         {{if created_at > 0}}
@@ -198,7 +204,7 @@ js;
 
 <script type="application/x-jquery-tmpl" id="empty">
     <tr>
-        <td colspan="11" style="text-align: center">
+        <td colspan="13" style="text-align: center">
             {{if text != '未找到相关数据'}}
             <i class="fa fa-spinner fa-spin"></i>
             {{/if}}
