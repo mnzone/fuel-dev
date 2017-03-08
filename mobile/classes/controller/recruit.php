@@ -38,6 +38,10 @@ class Controller_Recruit extends Controller_BaseController
      * 招聘信息
      */
     public function action_RecruitView(){
+        $id = \Input::get("id",0);
+        if($id == 0){
+            //找不到数据
+        }
 
         $params = [
             'action_name' => "招聘信息",

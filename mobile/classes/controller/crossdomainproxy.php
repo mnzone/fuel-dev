@@ -16,7 +16,8 @@ class Controller_CrossDomainProxy extends \Controller_BaseController
         }
 
         $url = base64_decode($url);
-        $response = \handle\common\UrlTool::request($url, \Input::method(), $this->get_params());
+
+        $response = \handle\common\UrlTool::request($url, \Input::method(), $this->get_params(), false, false, ['Accept' => 'application/json;vergsion=1']);
 
         die($response->body);
     }

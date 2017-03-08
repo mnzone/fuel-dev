@@ -114,6 +114,26 @@ class Controller_Job extends Controller_BaseController
         $this->response($this->result, 200);
     }
 
+    public function get_item(){
+        $this->result = ['status' => 'succ', 'msg' => 'ok', 'errcode' => 0];
+        $id = \Input::get("id",0);
+        $item = Model_Job::query()
+            ->select(['is_deleted' => false])
+            ->where([
+                'is_deleted' => 0,
+                'id' => $id
+            ])->get_one();
+
+        $this->result = [
+            'status' => 'succ',
+            'msg' => '',
+            'errcode' => 0,
+            'data' => $item
+        ];
+
+        $this->response($this->result, 200);
+    }
+
     public function put_index(){
 
         $id = \Input::get('id', false);

@@ -9,9 +9,9 @@ return array(
         'connection'     => array(
             'hostname'   => 'localhost',
             'port'       => '3306',
-            'database'   => 'sandbox',
-            'username'   => 'root',
-            'password'   => '',
+            'database'   => 'douer',
+            'username'   => 'douer',
+            'password'   => '123456',
             'persistent' => false,
             'compress'   => false,
         ),
