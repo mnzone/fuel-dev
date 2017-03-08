@@ -98,8 +98,10 @@ class Controller_Job extends Controller_BaseController
         list($result, $pagination) = Model_Job::get_pagination($query);
 
         $items = [];
-        foreach ($result as $item){
-            array_push($items, $item->to_array());
+        foreach ($result as $value){
+            $item = $value->to_array();
+            $item['company'] = $value->company->to_array();
+            array_push($items, $item);
         }
 
         $this->result = [

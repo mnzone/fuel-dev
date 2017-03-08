@@ -42,6 +42,16 @@ class Model_JobCandidate extends Model_BaseModel
         )
     );
 
+    protected static $_belongs_to = array(
+        'company' => array(
+            'key_from' => 'company_id',
+            'model_to' => 'Model_Company',
+            'key_to' => 'id',
+            'cascade_save' => true,
+            'cascade_delete' => false,
+        )
+    );
+
     public static function update_one($data, $id){
         // 单资源更新
         $candidate = Model_JobCandidate::find($id);

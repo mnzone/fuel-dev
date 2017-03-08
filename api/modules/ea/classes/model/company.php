@@ -1,28 +1,20 @@
 <?php
 /**
- * 职位数据模型
- *
  * Created by PhpStorm.
- *
- * User: ray
- * Date: 17-2-16
- * Time: 下午1:46
- * @package    api
- * @version    1.0
- * @author     Ray
- * @license    MIT License
- * @copyright  2010 - 2014 PMonkey Team
- * @link       http://mnzone.cn
+ * User: Ray
+ * Date: 2017/3/8
+ * Time: 下午11:56
  */
 
 namespace ea;
 
-class Model_Job extends Model_BaseModel
+
+class Model_Company extends Model_BaseModel
 {
     /**
      * @var  string  table name to overwrite assumption
      */
-    protected static $_table_name = 'jobs';
+    protected static $_table_name = 'jobs_company';
 
     protected static $_primary_key = array('id');
 
@@ -42,24 +34,14 @@ class Model_Job extends Model_BaseModel
         )
     );
 
-    protected static $_belongs_to = array(
-        'company' => array(
-            'key_from' => 'company_id',
-            'model_to' => 'Model_Company',
-            'key_to' => 'id',
-            'cascade_save' => true,
-            'cascade_delete' => false,
-        )
-    );
 
     protected static $_has_many = array(
-        'candidates' => array(
+        'jobs' => array(
             'key_from' => 'id',
-            'model_to' => 'Model_JobCandidate',
-            'key_to' => 'job_id',
+            'model_to' => 'Model_Job',
+            'key_to' => 'company_id',
             'cascade_save' => true,
             'cascade_delete' => false,
         )
     );
-
 }
