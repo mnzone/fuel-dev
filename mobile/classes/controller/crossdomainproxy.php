@@ -16,8 +16,8 @@ class Controller_CrossDomainProxy extends \Controller_BaseController
         }
 
         $url = base64_decode($url);
-
-        $response = \handle\common\UrlTool::request($url, \Input::method(), $this->get_params(), false, false, ['Accept' => 'application/json;vergsion=1']);
+        # 请求远程服务器
+        $response = \handle\common\API::request($url, \Input::method(), $this->get_params());
 
         die($response->body);
     }
