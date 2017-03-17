@@ -34,6 +34,24 @@ class Controller_SocialSecurity extends Controller_BaseController
     public function get_index(){
         $type = \Input::get('type', 'social');
 
+        $list = Model_SocialSecurity::query()
+            ->where([
+                'type' => $type
+            ])
+            ->get();
+
+        $items = [];
+        foreach ($list as $value) {
+            $item = $value->to_array();
+            array_push($items, $item);
+        }
+
+        $this->result = [
+            'status' => 'succ',
+            'msg' => '',
+            'errcode' => 0,
+            'data' => $items
+        ];
         $this->response($this->result, 200);
     }
 }
