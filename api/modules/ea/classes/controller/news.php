@@ -35,10 +35,9 @@ class Controller_News extends Controller_BaseController
      * 新闻列表接口
      */
     public function get_index(){
-
-        $news = \Model_Article::query()
-            ->select('id', 'title', 'created_at')
-            ->get();
+        $news = \Model_Node::query()
+            //->select('id', 'title', 'created_at')
+            ->order_by(array("id"=>"desc"))->limit(10)->get();
 
         $items = [];
         foreach ($news as $item){
@@ -54,19 +53,23 @@ class Controller_News extends Controller_BaseController
     }
 
     public function get_item($id = 0){
-        $news = \Model_Article::find($id);
-
+        $id = $id == 0 ? \Input::get('id',0) : $id;
+        $news =  \Input::get('id',0);//\Model_Node::find($id);
         if(! $news){
-            return $this->result = [
+            $this->result = [
                 'status' => 'err',
-                'msg' => '资源不存在'
+                'msg' => '资源不存在',
+                'tt'=>$news
             ];
+            $this->response($this->result, 200);
+            return;
         }
 
-        return $this->result = [
+        $this->result = [
             'status' => 'succ',
             'msg' => '',
             'data' => $news
         ];
+        $this->response($this->result, 200);
     }
 }

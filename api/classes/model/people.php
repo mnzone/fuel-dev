@@ -89,6 +89,11 @@ class Model_People extends Model_BaseModel
             'key_from' => 'parent_id',
             'key_to'   => 'buyer_id',
         ),
+        'banks' => array(
+            'model_to' => 'Model_PeopleBank',
+            'key_from' => 'parent_id',
+            'key_to'   => 'parent_id',
+        ),
         'properties' => array(
             'model_to' => 'Model_PeoplePropertie',
             'key_from' => 'parent_id',

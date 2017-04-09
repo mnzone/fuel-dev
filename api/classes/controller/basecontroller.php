@@ -48,7 +48,6 @@ abstract class Controller_BaseController extends \Fuel\Core\Controller_Rest
      * @return bool
      */
     public function auth_user(){
-
         if($this->get_not_token_allowed()){
             return true;
         }
@@ -63,6 +62,9 @@ abstract class Controller_BaseController extends \Fuel\Core\Controller_Rest
 
         try {
             $value = \Cache::get($key);
+
+            /* 缓存中没有数据时 */
+
         } catch (\CacheNotFoundException $e){
         }
 

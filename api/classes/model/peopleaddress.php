@@ -12,13 +12,13 @@
  * @extends  	\Orm\Model
  */
 
-class Model_PeopleBank extends Model_BaseModel
+class Model_PeopleAddress extends Model_BaseModel
 {
 
     /**
      * @var  string  table name to overwrite assumption
      */
-    protected static $_table_name = 'peoples_banks';
+    protected static $_table_name = 'peoples_address';
 
     protected static $_primary_key = array('id');
 
@@ -43,31 +43,6 @@ class Model_PeopleBank extends Model_BaseModel
             'model_to' => 'Model_People',
             'key_from' => 'parent_id',
             'key_to'   => 'user_id',
-        ),
-        'country' => array(
-            'model_to' => 'Model_Region',
-            'key_from' => 'country_id',
-            'key_to'   => 'id',
-        ),
-        'province' => array(
-            'model_to' => 'Model_Region',
-            'key_from' => 'province_id',
-            'key_to'   => 'id',
-        ),
-        'city' => array(
-            'model_to' => 'Model_Region',
-            'key_from' => 'city_id',
-            'key_to'   => 'id',
-        ),
-        'county' => array(
-            'model_to' => 'Model_Region',
-            'key_from' => 'county_id',
-            'key_to'   => 'id',
-        ),
-        'bank' => array(
-            'model_to' => 'Model_Bank',
-            'key_from' => 'bank_id',
-            'key_to'   => 'id',
         )
     );
 
