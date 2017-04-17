@@ -61,7 +61,7 @@
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
 
-                        <?php echo isset($content) ? $content : ''; ?>
+                        <?= isset($content) ? $content : ''; ?>
 
                         <!-- PAGE CONTENT ENDS -->
                     </div><!-- /.col -->
