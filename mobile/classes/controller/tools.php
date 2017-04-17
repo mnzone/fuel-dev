@@ -18,7 +18,7 @@ class Controller_Tools extends \Controller_BaseController
     }
 
     public function action_init_cache(){
-        \Cache::set('data_api_host', 'http://api.fuel-dev.ray');
+        \Cache::set('data_api_host', 'http://api.ayzhongjie.com');
         \Session::set('access_token', base64_encode(\Str::random('alnum', 16)));
 
         $this->template->content = "初始化完成...";

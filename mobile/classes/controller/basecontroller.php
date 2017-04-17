@@ -16,7 +16,7 @@ abstract class Controller_BaseController extends \Controller_Template
         parent::before();
 
         if( ! \handle\common\CacheTools::get_value('data_api_host')){
-            \Cache::set('data_api_host', 'http://api.5ztx.com');
+            \Cache::set('data_api_host', 'http://api.ayzhongjie.com');
         }
 
         $this->get_data_access_token();
