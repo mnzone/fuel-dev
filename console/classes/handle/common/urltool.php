@@ -117,8 +117,9 @@ class UrlTool{
 
         try{
             $result = $curl->execute()->response();
-        }catch(Exception $e){
+        }catch(\Exception $e){
             \Log::error("发送请求时，发生了异常(classes/tolls/tools.php)：" . $e->getMessage());
+            die($e->getMessage());
         }
 
         return $result;
